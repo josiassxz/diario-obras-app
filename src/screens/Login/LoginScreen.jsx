@@ -48,7 +48,7 @@ const LoginScreen = () => {
           </TitleContainer>
           
           <LoginButton onPress={handleLogin}>
-            <ButtonText>ENTRAR COM GOV.BR</ButtonText>
+            <ButtonText>ENTRAR COM <BoldText>GOV.BR</BoldText></ButtonText>
           </LoginButton>
           
           <InfoText>

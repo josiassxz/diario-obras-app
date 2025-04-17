@@ -65,7 +65,7 @@ export const LoginButton = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  font-family: ${fonts.aller.bold};
+  font-family: ${fonts.aller.regular};
   font-size: ${fontSizes.md}px;
   color: #333333;
   text-transform: uppercase;
