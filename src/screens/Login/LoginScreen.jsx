@@ -18,6 +18,7 @@ import {
   WebsiteText,
   FooterImage
 } from './styles';
+import Background from '../../components/Background';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -27,7 +28,8 @@ const LoginScreen = () => {
   };
 
   return (
-    <Container>
+    <Background>
+    <Container transparent>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <ScrollContainer>
         <ContentContainer>
@@ -65,6 +67,7 @@ const LoginScreen = () => {
         </ContentContainer>
       </ScrollContainer>
     </Container>
+    </Background>
   );
 };
 

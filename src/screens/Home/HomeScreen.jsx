@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Background from '../../components/Background';
 import {
   Container,
   Content,
@@ -29,7 +30,8 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <Container>
+    <Background>
+    <Container transparent>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       
       {/* Menu de hambúrguer */}
@@ -126,6 +128,7 @@ const HomeScreen = () => {
         // source={require('../../assets/images/warning.png')} 
       />
     </Container>
+    </Background>
   );
 };
 

@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native';
+import { fonts, fontSizes, fontWeights } from '../../theme/fonts';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #FFFFFF;
+  background-color: ${props => props.transparent ? 'transparent' : '#FFFFFF'};
 `;
 
 export const Content = styled.ScrollView`
@@ -114,7 +115,8 @@ export const OptionIcon = styled.Image`
 `;
 
 export const OptionText = styled.Text`
-  font-size: 12px;
+  font-family: ${fonts.aller.regular};
+  font-size: ${fontSizes.sm}px;
   text-align: center;
   color: #333;
 `;
@@ -129,7 +131,7 @@ export const BottomNavBar = styled.View`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.9);
 `;
 
 export const NavButton = styled.TouchableOpacity`
@@ -144,7 +146,8 @@ export const NavIcon = styled.Image`
 `;
 
 export const NavText = styled.Text`
-  font-size: 10px;
+  font-family: ${fonts.aller.bold};
+  font-size: ${fontSizes.xs}px;
   margin-top: 3px;
   text-align: center;
   color: #333;

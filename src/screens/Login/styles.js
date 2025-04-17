@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
-import theme from '../../theme/theme';
+import { fonts, fontSizes } from '../../theme/fonts';
 
 // Componentes estilizados
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #FFFFFF;
+  background-color: ${props => props.transparent ? 'transparent' : '#FFFFFF'};
 `;
 
 export const ScrollContainer = styled.ScrollView`
@@ -39,19 +39,19 @@ export const TitleContainer = styled.View`
 
 // Ajuste para o tamanho da fonte
 export const TitleText = styled.Text`
-  font-size: 45px;
-  font-weight: italic;
+  font-family: ${fonts.aller.italic};
+  font-size: ${fontSizes.xxl * 1.9}px;
   color: #000000;
   text-align: left;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 `;
 
 export const YellowTitle = styled.Text`
-  font-size: 45px;
-  font-weight: bold;
+  font-family: ${fonts.aller.bold};
+  font-size: ${fontSizes.xxl * 1.9}px;
   color: #FFCC33;
   text-align: left;
   text-shadow: 1px 1px 0 #00000033;
-
 `;
 
 export const LoginButton = styled.TouchableOpacity`
@@ -64,37 +64,41 @@ export const LoginButton = styled.TouchableOpacity`
   margin-bottom: 20px;
 `;
 
-
 export const ButtonText = styled.Text`
-  font-size: 14px;
-  font-weight: bold;
+  font-family: ${fonts.aller.bold};
+  font-size: ${fontSizes.md}px;
   color: #333333;
   text-transform: uppercase;
 `;
 
 export const InfoText = styled.Text`
-  font-size: 14px;
+  font-family: ${fonts.aller.regular};
+  font-size: ${fontSizes.md}px;
   color: #333333;
   align-self: stretch;
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8);
 `;
 
 export const BoldText = styled.Text`
-  font-weight: bold;
+  font-family: ${fonts.aller.bold};
 `;
 
 export const SystemNameText = styled.Text`
-  font-size: 15px;
-  font-weight: bold;
+  font-family: ${fonts.aller.bold};
+  font-size: ${fontSizes.lg}px;
   color: #1A2438;
   margin-bottom: 10px;
   align-self: stretch;
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8);
 `;
 
 export const WebsiteText = styled.Text`
-  font-size: 14px;
+  font-family: ${fonts.aller.regular};
+  font-size: ${fontSizes.md}px;
   color: #333333;
   margin-top: 10px;
   align-self: stretch;
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.8);
 `;
 
 export const FooterImage = styled.Image`

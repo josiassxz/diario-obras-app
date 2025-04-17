@@ -1,27 +1,28 @@
-const theme = {
-  colors: {
-    primary: '#FFCC33',
-    secondary: '#1A2438',
-    background: '#FFFFFF',
-    text: '#333333',
-    textDark: '#1A2438',
+// Configuração centralizada de fontes
+export const fonts = {
+  // Nomes das fontes
+  aller: {
+    regular: 'Aller-Regular',
+    bold: 'Aller-Bold',
+    italic: 'Aller-Italic',
+    boldItalic: 'Aller-Bold-Italic',
   },
-  fonts: {
-    regular: 'Roboto-Regular',
-    medium: 'Roboto-Medium',
-    bold: 'Roboto-Bold',
-  },
-  spacing: {
-    small: 8,
-    medium: 16,
-    large: 24,
-    xlarge: 32,
-  },
-  borderRadius: {
-    small: 4,
-    medium: 8,
-    large: 16,
-  }
 };
 
-export default theme;
+// Tamanhos de fonte
+export const fontSizes = {
+  xs: 10,
+  sm: 12,
+  md: 14,
+  lg: 16,
+  xl: 18,
+  xxl: 24,
+};
+
+// Pesos de fonte (para fontes que não têm arquivos separados)
+export const fontWeights = {
+  regular: 'normal',
+  medium: '500',
+  semiBold: '600',
+  bold: 'bold',
+};
