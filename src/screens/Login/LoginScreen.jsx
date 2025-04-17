@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   ScrollContainer,
@@ -19,6 +20,12 @@ import {
 } from './styles';
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <Container>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
@@ -38,7 +45,7 @@ const LoginScreen = () => {
             <YellowTitle>FERROVIAS</YellowTitle>
           </TitleContainer>
           
-          <LoginButton>
+          <LoginButton onPress={handleLogin}>
             <ButtonText>ENTRAR COM GOV.BR</ButtonText>
           </LoginButton>
           
