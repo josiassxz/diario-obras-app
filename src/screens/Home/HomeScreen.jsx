@@ -44,7 +44,7 @@ const HomeScreen = () => {
       {/* Imagem principal com aviso */}
       <MainImageContainer>
         <MainImage 
-          source={require('../../assets/images/railway_construction.png')} 
+          // source={require('../../assets/images/railway_construction.png')} 
           resizeMode="cover"
         />
         <WarningBorderTop />
@@ -62,14 +62,14 @@ const HomeScreen = () => {
         <OptionRow>
           <OptionButton>
             <OptionIcon 
-              source={require('../../assets/images/diario_icon.png')} 
+              source={require('../../assets/images/trechos-ferrovias.png')} 
             />
             <OptionText>Cadastro de informações dos trechos</OptionText>
           </OptionButton>
           
           <OptionButton>
             <OptionIcon 
-              source={require('../../assets/images/relatorios_icon.png')} 
+              source={require('../../assets/images/relatorios.png')} 
             />
             <OptionText>Relatórios dos trechos cadastrados</OptionText>
           </OptionButton>
@@ -77,7 +77,7 @@ const HomeScreen = () => {
         
         <OptionButton center>
           <OptionIcon 
-            source={require('../../assets/images/diario_icon.png')} 
+            source={require('../../assets/images/diario-de-obra.png')} 
           />
           <OptionText>Relatórios Diário de Obras</OptionText>
         </OptionButton>
@@ -87,35 +87,35 @@ const HomeScreen = () => {
       <BottomNavBar>
         <NavButton>
           <NavIcon 
-            source={require('../../assets/images/home_icon.png')} 
+            source={require('../../assets/images/home.png')} 
           />
           <NavText>Home</NavText>
         </NavButton>
         
         <NavButton>
           <NavIcon 
-            source={require('../../assets/images/cadastro_icon.png')} 
+            source={require('../../assets/images/trechos-ferrovias.png')} 
           />
           <NavText>Cadastro de trechos</NavText>
         </NavButton>
         
         <NavButton>
           <NavIcon 
-            source={require('../../assets/images/relatorios_icon.png')} 
+            source={require('../../assets/images/relatorios.png')} 
           />
           <NavText>Relatórios dos trechos</NavText>
         </NavButton>
         
         <NavButton>
           <NavIcon 
-            source={require('../../assets/images/diario_icon.png')} 
+            source={require('../../assets/images/diario-de-obra.png')} 
           />
           <NavText>Relatório Diário de Obras</NavText>
         </NavButton>
         
         <NavButton onPress={() => navigation.navigate('Login')}>
           <NavIcon 
-            source={require('../../assets/images/sair_icon.png')} 
+            source={require('../../assets/images/sair.png')} 
           />
           <NavText>Sair</NavText>
         </NavButton>
