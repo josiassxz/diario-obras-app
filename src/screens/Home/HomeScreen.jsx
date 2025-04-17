@@ -96,14 +96,14 @@ const HomeScreen = () => {
           <NavIcon 
             source={require('../../assets/images/trechos-ferrovias.png')} 
           />
-          <NavText>Cadastro de trechos</NavText>
+          <NavText>Cadastro de informações dos trechos</NavText>
         </NavButton>
         
         <NavButton>
           <NavIcon 
             source={require('../../assets/images/relatorios.png')} 
           />
-          <NavText>Relatórios dos trechos</NavText>
+          <NavText>Relatórios dos trechos cadastrados</NavText>
         </NavButton>
         
         <NavButton>

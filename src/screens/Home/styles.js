@@ -133,6 +133,7 @@ export const BottomNavBar = styled.View`
 `;
 
 export const NavButton = styled.TouchableOpacity`
+  margin-bottom: 14px;
   align-items: center;
   flex: 1;
 `;
@@ -145,6 +146,7 @@ export const NavIcon = styled.Image`
 export const NavText = styled.Text`
   font-size: 10px;
   margin-top: 3px;
+  text-align: center;
   color: #333;
 `;
 
