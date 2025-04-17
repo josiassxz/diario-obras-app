@@ -121,6 +121,11 @@ export const OptionText = styled.Text`
   color: #333;
 `;
 
+export const NavBarDivider = styled.Image`
+  width: 100%;
+  height: 5px; 
+`;
+
 export const BottomNavBar = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -159,4 +164,17 @@ export const BottomWarningIcon = styled.Image`
   left: 10px;
   width: 25px;
   height: 25px;
+`;
+
+export const DividerContainer = styled.View`
+  width: 100%;
+  margin-top: 190px;
+  overflow: hidden;
+  transform: rotate(2deg);
+`;
+
+export const DividerImage = styled.Image`
+  width: 100%;
+  height: 50px;
+  transform: rotate(0deg);
 `;

@@ -1,10 +1,11 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Image, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Background from '../../components/Background';
 import {
+  DividerContainer,
+  DividerImage,
   Container,
-  Content,
   Header,
   MenuButton,
   MenuLine,
@@ -85,6 +86,13 @@ const HomeScreen = () => {
         </OptionButton>
       </OptionsContainer>
       
+      {/* Divisória personalizada estilo faixa amarela com listras */}
+      <DividerContainer>
+      <DividerImage
+        source={require('../../assets/images/bar.png')}
+        resizeMode="stretch"
+      />
+    </DividerContainer>
       {/* Barra de navegação inferior */}
       <BottomNavBar>
         <NavButton>
@@ -131,5 +139,21 @@ const HomeScreen = () => {
     </Background>
   );
 };
+
+// Estilos específicos para a divisória
+const styles = StyleSheet.create({
+  dividerContainer: {
+    width: '100%',
+    marginTop: 195,    // Mantendo o seu ajuste atual de margem superior
+    overflow: 'hidden', // Isso impede que partes da imagem saiam do container
+    transform: [{ rotate: '2deg' }], // Forçar alinhamento em 0 graus
+  },
+  dividerImage: {
+    width: '100%',
+    height: 50,      // Mantendo sua altura atual
+    resizeMode: 'stretch', // Garantir que a imagem preencha todo o espaço disponível
+    transform: [{ rotate: '0deg' }], // Força alinhamento em 0 graus também na imagem
+  }
+});
 
 export default HomeScreen;
