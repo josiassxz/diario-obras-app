@@ -1,0 +1,64 @@
+import React from 'react';
+import { StatusBar } from 'react-native';
+import {
+  Container,
+  ScrollContainer,
+  ContentContainer,
+  IconContainer,
+  ConeIcon,
+  TitleContainer,
+  TitleText,
+  YellowTitle,
+  LoginButton,
+  ButtonText,
+  InfoText,
+  BoldText,
+  SystemNameText,
+  WebsiteText,
+  FooterImage
+} from './styles';
+
+const LoginScreen = () => {
+  return (
+    <Container>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <ScrollContainer>
+        <ContentContainer>
+          <IconContainer>
+            <ConeIcon 
+              source={require('../../assets/images/cone_icon.png')} 
+              resizeMode="contain"
+            />
+          </IconContainer>
+          
+          <TitleContainer>
+            <TitleText>SISTEMA DE</TitleText>
+            <YellowTitle>CONTROLE DE</YellowTitle>
+            <YellowTitle>OBRAS DE</YellowTitle>
+            <YellowTitle>FERROVIAS</YellowTitle>
+          </TitleContainer>
+          
+          <LoginButton>
+            <ButtonText>ENTRAR COM GOV.BR</ButtonText>
+          </LoginButton>
+          
+          <InfoText>
+            Entre com o <BoldText>gov.br</BoldText> e acesse todas as aplicações do
+          </InfoText>
+          <SystemNameText>
+            Sistema de Controle de Obras de Ferrovias
+          </SystemNameText>
+          
+          <WebsiteText>www.scof.com</WebsiteText>
+          
+          <FooterImage 
+            source={require('../../assets/images/railway_tracks.png')} 
+            resizeMode="contain"
+          />
+        </ContentContainer>
+      </ScrollContainer>
+    </Container>
+  );
+};
+
+export default LoginScreen;
