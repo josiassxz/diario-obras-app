@@ -47,16 +47,8 @@ const HomeScreen = () => {
       {/* Imagem principal com aviso */}
       <MainImageContainer>
         <MainImage 
-          // source={require('../../assets/images/railway_construction.png')} 
+          source={require('../../assets/images/tela-logado.png')} 
           resizeMode="cover"
-        />
-        <WarningBorderTop />
-        <WarningBorderBottom />
-        <WarningIcon 
-          // source={require('../../assets/images/warning.png')} 
-        />
-        <ConeIcon 
-          source={require('../../assets/images/cone_icon.png')} 
         />
       </MainImageContainer>
       

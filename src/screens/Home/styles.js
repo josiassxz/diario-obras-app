@@ -28,15 +28,16 @@ export const MenuLine = styled.View`
 
 export const MainImageContainer = styled.View`
   position: relative;
-  width: 100%;
-  height: 180px;
+  width: 90%;  
+  height: 200px; 
   margin-bottom: 20px;
 `;
 
 export const MainImage = styled.Image`
-  width: 100%;
-  height: 100%;
+  width: 100%; 
+  height: 130%; 
 `;
+
 
 export const WarningBorderTop = styled.View`
   position: absolute;
@@ -49,38 +50,16 @@ export const WarningBorderTop = styled.View`
   z-index: 1;
 `;
 
-export const WarningBorderBottom = styled.View`
-  position: absolute;
-  bottom: 0;
-  height: 15px;
-  width: 100%;
-  background-color: #FFCC33;
-  flex-direction: row;
-  justify-content: space-between;
-  z-index: 1;
-`;
 
-export const WarningIcon = styled.Image`
-  position: absolute;
-  bottom: 5px;
-  left: 10px;
-  width: 25px;
-  height: 25px;
-  z-index: 2;
-`;
 
-export const ConeIcon = styled.Image`
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  width: 25px;
-  height: 25px;
-  z-index: 2;
-`;
+
+
+
 
 export const OptionsContainer = styled.View`
   padding: 15px;
   margin-bottom: 10px;
+  margin-top: 30px;
 `;
 
 export const OptionRow = styled.View`
@@ -168,7 +147,7 @@ export const BottomWarningIcon = styled.Image`
 
 export const DividerContainer = styled.View`
   width: 100%;
-  margin-top: 190px;
+  margin-top: 140px;
   overflow: hidden;
   transform: rotate(2deg);
 `;
