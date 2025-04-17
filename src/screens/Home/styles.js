@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { fonts, fontSizes, fontWeights } from '../../theme/fonts';
 
@@ -147,7 +148,7 @@ export const BottomWarningIcon = styled.Image`
 
 export const DividerContainer = styled.View`
   width: 100%;
-  margin-top: 140px;
+  margin-top: ${Platform.OS === 'ios' ? '140px' : '190px'};
   overflow: hidden;
   transform: rotate(2deg);
 `;
