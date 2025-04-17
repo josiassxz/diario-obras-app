@@ -30,16 +30,16 @@ export const ConeIcon = styled.Image`
   transform: rotate(5deg);
 `;
 
-// Ajustes para o título
+
 export const TitleContainer = styled.View`
   align-self: stretch;
   margin-top: 20px;
   margin-bottom: 30px;
 `;
 
-// Ajuste para o tamanho da fonte
+
 export const TitleText = styled.Text`
-  font-family: ${fonts.aller.italic};
+  font-family: ${fonts.aller.regular};
   font-size: ${fontSizes.xxl * 1.9}px;
   color: #000000;
   text-align: left;
