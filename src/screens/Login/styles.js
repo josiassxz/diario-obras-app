@@ -19,14 +19,14 @@ export const ContentContainer = styled.View`
 
 export const IconContainer = styled.View`
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 60px;
   z-index: 1;
 `;
 
 export const ConeIcon = styled.Image`
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   transform: rotate(5deg);
 `;
 
@@ -57,11 +57,13 @@ export const YellowTitle = styled.Text`
 export const LoginButton = styled.TouchableOpacity`
   width: 60%;
   background-color: #FFCC33;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 1px;
+  padding: 10px;
   align-items: center;
+  align-self: flex-start;
   margin-bottom: 20px;
 `;
+
 
 export const ButtonText = styled.Text`
   font-size: 14px;
@@ -96,8 +98,8 @@ export const WebsiteText = styled.Text`
 `;
 
 export const FooterImage = styled.Image`
-  width: 100%;
-  height: 200px;
-  margin-top: auto;
+  width: 120%;
+  height: 375px;
+  margin-top: 3px;
   margin-bottom: 30px;
 `;
