@@ -1,15 +1,13 @@
 import React from 'react';
-import { Modal, StatusBar } from 'react-native';
+import { View, Modal, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Background from '../../components/Background';
 import {
   ModalWrapper,
-  ModalContainer,
-  SideBarContainer,
-  SideBar,
+  MenuBackground,
+  ContentContainer,
   CloseButton,
   CloseIcon,
-  ContentContainer,
   ProfileContainer,
   ProfileImage,
   ProfileTextContainer,
@@ -19,8 +17,31 @@ import {
   MenuItem,
   MenuItemIcon,
   MenuItemText,
-  Divider
 } from './styles';
+
+// Componente para linha tracejada diretamente incorporado
+const DashedDivider = () => {
+  return (
+    <View style={{ 
+      flexDirection: 'row', 
+      alignItems: 'center',
+      marginVertical: 2,
+      width: '100%',
+    }}>
+      {Array.from({ length: 40 }).map((_, index) => (
+        <View 
+          key={index} 
+          style={{
+            width: 5,
+            height: 1,
+            backgroundColor: '#CCCCCC',
+            marginHorizontal: 2,
+          }}
+        />
+      ))}
+    </View>
+  );
+};
 
 // Definindo a interface de props para o componente
 interface CustomMenuModalProps {
@@ -52,8 +73,11 @@ const CustomMenuModal: React.FC<CustomMenuModalProps> = ({ visible, onClose }) =
         <StatusBar barStyle="dark-content" backgroundColor="rgba(0,0,0,0.5)" />
         
         <ModalWrapper>
-          {/* Conteúdo do menu */}
-          <ModalContainer>
+          {/* Menu com imagem de fundo (incluindo a barra lateral) */}
+          <MenuBackground 
+            source={require('../../assets/images/menu.png')} 
+            resizeMode="stretch"
+          >
             <ContentContainer>
               <CloseButton onPress={onClose} activeOpacity={0.7}>
                 <CloseIcon source={require('../../assets/images/fechar.png')} />
@@ -69,40 +93,40 @@ const CustomMenuModal: React.FC<CustomMenuModalProps> = ({ visible, onClose }) =
               
               <MenuItemsContainer>
                 <MenuItem onPress={() => handleNavigate('Dashboard')} activeOpacity={0.7}>
-                  <MenuItemIcon source={require('../../assets/images/dashboard.png')} />
-                  <MenuItemText>Dashboard</MenuItemText>
+                  <MenuItemIcon source={require('../../assets/images/perfil.png')} />
+                  <MenuItemText>Dados do usuário</MenuItemText>
                 </MenuItem>
-                <Divider />
+                <DashedDivider />
                 
                 <MenuItem onPress={() => handleNavigate('CadastroTrechos')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/trechos-ferrovias.png')} />
                   <MenuItemText>Cadastro de informações dos trechos</MenuItemText>
                 </MenuItem>
-                <Divider />
+                <DashedDivider />
                 
                 <MenuItem onPress={() => handleNavigate('RelatoriosTrechos')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/relatorios.png')} />
                   <MenuItemText>Relatórios dos trechos cadastrados</MenuItemText>
                 </MenuItem>
-                <Divider />
+                <DashedDivider />
                 
                 <MenuItem onPress={() => handleNavigate('DiarioObra')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/diario-de-obra.png')} />
                   <MenuItemText>Relatório Diário de Obra</MenuItemText>
                 </MenuItem>
-                <Divider />
+                <DashedDivider />
                 
                 <MenuItem onPress={() => handleNavigate('Configuracoes')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/configuracoes.png')} />
                   <MenuItemText>Configurações</MenuItemText>
                 </MenuItem>
-                <Divider />
+                <DashedDivider />
                 
                 <MenuItem onPress={() => handleNavigate('Ajuda')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/ajuda.png')} />
                   <MenuItemText>Ajuda</MenuItemText>
                 </MenuItem>
-                <Divider />
+                <DashedDivider />
                 
                 <MenuItem onPress={() => handleNavigate('Login')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/sair.png')} />
@@ -110,9 +134,7 @@ const CustomMenuModal: React.FC<CustomMenuModalProps> = ({ visible, onClose }) =
                 </MenuItem>
               </MenuItemsContainer>
             </ContentContainer>
-          </ModalContainer>
-          
-
+          </MenuBackground>
         </ModalWrapper>
       </Background>
     </Modal>
