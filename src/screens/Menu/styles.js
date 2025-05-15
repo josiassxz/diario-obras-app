@@ -2,10 +2,29 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { fonts, fontSizes } from '../../theme/fonts';
 
+// Definindo um "wrapper" para o menu e a barra juntos
+export const ModalWrapper = styled.View`
+  flex: 1;
+  flex-direction: row;
+`;
+
 export const ModalContainer = styled.View`
   flex: 1;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 20px;
+  width: 85%; 
+`;
+
+// Container para a barra vertical que ficará no lado direito
+export const SideBarContainer = styled.View`
+  width: 15%;
+  height: 15%;
+  background-color: transparent;
+`;
+
+export const SideBar = styled.Image`
+  width: 100%;
+  height: 100%;
+  resize-mode: stretch;
 `;
 
 export const CloseButton = styled.TouchableOpacity`
@@ -17,7 +36,7 @@ export const CloseButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   z-index: 10;
-  background-color:rgb(201, 201, 201);
+  background-color: rgb(201, 201, 201);
   border-radius: 20px;
   elevation: 5;
   shadow-color: #000;
@@ -31,7 +50,10 @@ export const CloseIcon = styled.Image`
   height: 24px;
 `;
 
-
+export const ContentContainer = styled.View`
+  flex: 1;
+  padding: 20px;
+`;
 
 export const ProfileContainer = styled.View`
   flex-direction: row;  
@@ -52,20 +74,18 @@ export const ProfileImage = styled.Image`
   height: 80px;
   border-radius: 40px;
   border-width: 2px;
-  border-color:rgb(6, 6, 5);
+  border-color: rgb(6, 6, 5);
 `;
 
 export const UserNameText = styled.Text`
   font-family: ${fonts.aller.bold};
   font-size: ${fontSizes.lg}px;
-  color: #333333;
-  margin-top: 10px;
-`;
+  color: #333333;`;
 
 export const UserRoleText = styled.Text`
   font-family: ${fonts.aller.regular};
   font-size: ${fontSizes.sm}px;
-  color:rgb(2, 0, 0);
+  color: rgb(2, 0, 0);
   margin-top: 3px;
 `;
 
