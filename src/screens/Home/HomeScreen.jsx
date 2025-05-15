@@ -1,7 +1,9 @@
-import React from 'react';
-import { StatusBar, Image, View, StyleSheet } from 'react-native';
+
+import React, { useState, useEffect } from 'react';
+import { StatusBar, Image, View, StyleSheet, Alert, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Background from '../../components/Background';
+import CustomMenuModal from '../Menu'; // Importando o modal de menu
 import {
   DividerContainer,
   DividerImage,
@@ -29,20 +31,44 @@ import {
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  // Estado para controlar a visibilidade do menu
+  const [menuVisible, setMenuVisible] = useState(false);
+  
+  // Debug: mostrar se o menu está visível ou não
+  useEffect(() => {
+    console.log(`Menu visível: ${menuVisible}`);
+  }, [menuVisible]);
+
+  // Função para abrir o menu de hambúrguer
+  const handleOpenMenu = () => {
+    setMenuVisible(true);
+  };
+
+  // Função para fechar o menu
+  const handleCloseMenu = () => {
+    console.log("Fechando menu");
+    setMenuVisible(false);
+  };
 
   return (
     <Background>
     <Container transparent>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       
-      {/* Menu de hambúrguer */}
+      {/* Menu de hambúrguer com função de abertura */}
       <Header>
-        <MenuButton>
+        <MenuButton onPress={handleOpenMenu} activeOpacity={0.7}>
           <MenuLine />
           <MenuLine />
           <MenuLine />
         </MenuButton>
       </Header>
+      
+      {/* Modal de menu customizado */}
+      <CustomMenuModal 
+        visible={menuVisible} 
+        onClose={handleCloseMenu} 
+      />
       
       {/* Imagem principal com aviso */}
       <MainImageContainer>
@@ -55,14 +81,20 @@ const HomeScreen = () => {
       {/* Botões de opções */}
       <OptionsContainer>
         <OptionRow>
-          <OptionButton>
+          <OptionButton onPress={() => {
+            console.log("Botão Cadastro pressionado");
+            navigation.navigate('CadastroTrechos');
+          }}>
             <OptionIcon 
               source={require('../../assets/images/trechos-ferrovias.png')} 
             />
             <OptionText>Cadastro de informações dos trechos</OptionText>
           </OptionButton>
           
-          <OptionButton>
+          <OptionButton onPress={() => {
+            console.log("Botão Relatórios pressionado");
+            navigation.navigate('RelatoriosTrechos');
+          }}>
             <OptionIcon 
               source={require('../../assets/images/relatorios.png')} 
             />
@@ -70,7 +102,10 @@ const HomeScreen = () => {
           </OptionButton>
         </OptionRow>
         
-        <OptionButton center>
+        <OptionButton center onPress={() => {
+          console.log("Botão Diário pressionado");
+          navigation.navigate('DiarioObra');
+        }}>
           <OptionIcon 
             source={require('../../assets/images/diario-de-obra.png')} 
           />
@@ -80,11 +115,12 @@ const HomeScreen = () => {
       
       {/* Divisória personalizada estilo faixa amarela com listras */}
       <DividerContainer>
-      <DividerImage
-        source={require('../../assets/images/bar.png')}
-        resizeMode="stretch"
-      />
-    </DividerContainer>
+        <DividerImage
+          source={require('../../assets/images/bar.png')}
+          resizeMode="stretch"
+        />
+      </DividerContainer>
+      
       {/* Barra de navegação inferior */}
       <BottomNavBar>
         <NavButton>
@@ -94,25 +130,25 @@ const HomeScreen = () => {
           <NavText>Home</NavText>
         </NavButton>
         
-        <NavButton>
+        <NavButton onPress={() => navigation.navigate('CadastroTrechos')}>
           <NavIcon 
             source={require('../../assets/images/trechos-ferrovias.png')} 
           />
-          <NavText>Cadastro de informações dos trechos</NavText>
+          <NavText>Cadastro</NavText>
         </NavButton>
         
-        <NavButton>
+        <NavButton onPress={() => navigation.navigate('RelatoriosTrechos')}>
           <NavIcon 
             source={require('../../assets/images/relatorios.png')} 
           />
-          <NavText>Relatórios dos trechos cadastrados</NavText>
+          <NavText>Relatórios</NavText>
         </NavButton>
         
-        <NavButton>
+        <NavButton onPress={() => navigation.navigate('DiarioObra')}>
           <NavIcon 
             source={require('../../assets/images/diario-de-obra.png')} 
           />
-          <NavText>Relatório Diário de Obras</NavText>
+          <NavText>Diário</NavText>
         </NavButton>
         
         <NavButton onPress={() => navigation.navigate('Login')}>
@@ -122,30 +158,9 @@ const HomeScreen = () => {
           <NavText>Sair</NavText>
         </NavButton>
       </BottomNavBar>
-      
-      {/* Aviso de canto inferior */}
-      <BottomWarningIcon 
-        // source={require('../../assets/images/warning.png')} 
-      />
     </Container>
     </Background>
   );
 };
-
-// Estilos específicos para a divisória
-const styles = StyleSheet.create({
-  dividerContainer: {
-    width: '100%',
-    marginTop: 195,    // Mantendo o seu ajuste atual de margem superior
-    overflow: 'hidden', // Isso impede que partes da imagem saiam do container
-    transform: [{ rotate: '2deg' }], // Forçar alinhamento em 0 graus
-  },
-  dividerImage: {
-    width: '100%',
-    height: 50,      // Mantendo sua altura atual
-    resizeMode: 'stretch', // Garantir que a imagem preencha todo o espaço disponível
-    transform: [{ rotate: '0deg' }], // Força alinhamento em 0 graus também na imagem
-  }
-});
 
 export default HomeScreen;
