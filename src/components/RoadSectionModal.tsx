@@ -1,6 +1,6 @@
 import { X } from 'lucide-react-native';
 import React, { useState } from 'react'
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native'
+import { Modal, Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { Table } from './Table';
 
 interface IProps {
@@ -69,6 +69,21 @@ export const RoadSectionModal = ({ visible, setVisible, title, setFormVisible }:
             <Table type='Em Andamento' setFormVisible={setFormVisible} />
 
             <Table type='Concluídos' setFormVisible={setFormVisible} />
+
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#FFD200',
+              padding: 15,
+              borderRadius: 10,
+              alignItems: 'center',
+              width: '100%',
+            }}
+            onPress={() => setFormVisible(true)}
+          >
+            <Text style={{ color: '#000', fontSize: 16 }}>
+              Novo Registro
+            </Text>
+          </TouchableOpacity>
 
           </View>
 

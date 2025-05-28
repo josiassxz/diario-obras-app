@@ -78,7 +78,6 @@ export const RoadSectionForm = ({ visible, setVisible, title }: IProps) => {
                 style={{
                   fontSize: 16,
                   color: '#000',
-                  marginBottom: 10,
                   fontWeight: 'bold',
                 }}
               >
@@ -95,7 +94,6 @@ export const RoadSectionForm = ({ visible, setVisible, title }: IProps) => {
               width: '100%',
               flexDirection: 'column',
               alignItems: 'center',
-              marginTop: 20,
               gap: 10,
             }}
           >
@@ -193,7 +191,7 @@ export const RoadSectionForm = ({ visible, setVisible, title }: IProps) => {
 
             <TouchableOpacity
               style={{
-                backgroundColor: '#d8e619',
+                backgroundColor: '#FFD200',
                 padding: 15,
                 borderRadius: 10,
                 alignItems: 'center',
