@@ -14,14 +14,14 @@ export const RoadSectionCard = ({ id, title, onPress }: IProps) => {
         //centralizar itens dentro
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffff0d',
+        backgroundColor: '#FFD200',
         height: 130,
         width: 130,
         borderRadius: 10,
       }}
       onTouchEnd={onPress}
     >
-      <Text style={{ textAlign: 'center' }}>{title}</Text>
+      <Text style={{ textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>{title}</Text>
     </View>
   )
 }

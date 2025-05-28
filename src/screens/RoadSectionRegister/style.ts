@@ -91,7 +91,7 @@ export const ContainerContent = styled.View`
 `;
 
 export const ContentTitle = styled.Text`
-  font-size: ${fontSizes.xl}px;
+  font-size: ${fontSizes.xxl}px;
   font-weight: ${fontWeights.bold};
   margin-bottom: 10px;
   text-align: left;
@@ -99,8 +99,8 @@ export const ContentTitle = styled.Text`
 `
 
 export const ContentSubtitle = styled.Text`
-  font-size: ${fontSizes.sm}px;
-  font-weight: ${fontWeights.regular};
+  font-size: ${fontSizes.md}px;
+  font-weight: ${fontWeights.semiBold};
   margin-bottom: 20px;
   text-align: left;
   width: 100%;

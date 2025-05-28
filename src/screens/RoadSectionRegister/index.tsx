@@ -24,12 +24,17 @@ import {
 } from './style';
 import CustomMenuModal from '../Menu';
 import Background from '../../components/Background';
-import { StatusBar, Text, View, ScrollView, StyleSheet } from 'react-native';
+import { StatusBar, Text, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { ChevronLeft, Menu } from 'lucide-react-native';
 import Select from '../../components/Select';
 import { RoadSectionCard } from '../../components/RoadSectionCard';
 import { RoadSectionModal } from '../../components/RoadSectionModal';
 import { RoadSectionForm } from '../../components/RoadSectionForm';
+import { Dropdown } from '../../components/Dropdown';
+import { MainModal } from '../../components/MainModal';
+import { Table } from '../../components/Table';
+import { TableComponent } from '../../components/TableComponent';
+import { Button } from '../../components/Button';
 
 type RootStackParamList = {
   RoadSectionRegister: undefined;
@@ -49,7 +54,7 @@ const cards = [
 ]
 
 export const RoadSectionRegister = () => {
-  const [selectedValue, setSelectedValue] = useState<string>('');
+  const [selectedDropdownValue, setSelectedDropdownValue] = useState<string>('');
   const [formVisible, setFormVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -66,14 +71,14 @@ export const RoadSectionRegister = () => {
   };
 
   useEffect(() => {
-    if (selectedValue && scrollViewRef.current) {
+    if (selectedDropdownValue && scrollViewRef.current) {
 
       const timeout = setTimeout(() => {
         scrollViewRef.current?.scrollToEnd({ animated: true });
       }, 100);
       return () => clearTimeout(timeout);
     }
-  }, [selectedValue]);
+  }, [selectedDropdownValue]);
 
   return (
     <Background>
@@ -111,9 +116,9 @@ export const RoadSectionRegister = () => {
         <ContainerContent style={{ paddingTop: 200, paddingBottom: 100 }}>
           <View style={{
             width: '80%',
-            marginHorizontal: '10%',
             gap: 10,
             marginTop: 50,
+            alignSelf: 'center',
           }}>
             <ContentTitle>
               Cadastro das informações dos trechos ferroviários
@@ -123,17 +128,13 @@ export const RoadSectionRegister = () => {
               No campo de seleção abaixo, escolha o trecho ferroviário para preencher as informações.
             </ContentSubtitle>
 
-            <Select
-              selectedValue={selectedValue}
-              setSelectedValue={setSelectedValue}
-              items={[
-                { label: 'Trecho 1', value: 'trecho1' },
-                { label: 'Trecho 2', value: 'trecho2' },
-                { label: 'Trecho 3', value: 'trecho3' },
-              ]}
+            <Dropdown
+              value={selectedDropdownValue}
+              setValue={setSelectedDropdownValue}
+              placeholder='Selecione o trecho'
             />
 
-            {selectedValue && (
+            {selectedDropdownValue && (
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 20, justifyContent: 'space-between', width: '100%', columnGap: 10 }}>
                 {
                   cards.map(card => (
@@ -196,18 +197,49 @@ export const RoadSectionRegister = () => {
         onClose={handleCloseMenu}
       />
 
-      <RoadSectionModal
+      {/* <RoadSectionModal
         visible={modalVisible}
         setVisible={setModalVisible}
         setFormVisible={setFormVisible}
         title={selectedRoadSection}
       />
 
-      <RoadSectionForm  
+      <RoadSectionForm
         visible={formVisible}
         setVisible={setFormVisible}
         title={selectedRoadSection}
-      />
+      /> */}
+
+      <MainModal
+        visible={modalVisible}
+        setVisible={setModalVisible}
+        title={selectedRoadSection}
+        marginTop={150}
+        height={800}
+      >
+
+        <>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 20,
+            }}
+          >
+
+            <Table type='Em Andamento' setFormVisible={setFormVisible} />
+
+            <Table type='Concluídos' setFormVisible={setFormVisible} />
+            
+            <Button
+            title='Novo Registro'
+            />
+
+          </View>
+        </>
+
+      </MainModal>
 
     </Background >
   )
