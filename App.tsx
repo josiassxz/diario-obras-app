@@ -7,6 +7,7 @@ import LoginScreen from './src/screens/Login';
 import HomeScreen from './src/screens/Home';
 import * as Font from 'expo-font';
 import { View, Text } from 'react-native';
+import { RoadSectionRegister } from './src/screens/RoadSectionRegister';
 
 // Ignorar avisos específicos para debug
 LogBox.ignoreLogs(['Sending']);
@@ -57,8 +58,8 @@ const App = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="RoadSectionRegister" component={RoadSectionRegister} />
         {/* Adicione mais telas conforme necessário */}
-        {/* <Stack.Screen name="CadastroTrechos" component={CadastroTrechosScreen} /> */}
         {/* <Stack.Screen name="RelatoriosTrechos" component={RelatoriosTrechosScreen} /> */}
         {/* <Stack.Screen name="DiarioObra" component={DiarioObraScreen} /> */}
         {/* <Stack.Screen name="Configuracoes" component={ConfiguracoesScreen} /> */}

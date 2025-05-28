@@ -83,7 +83,7 @@ const HomeScreen = () => {
         <OptionRow>
           <OptionButton onPress={() => {
             console.log("Botão Cadastro pressionado");
-            navigation.navigate('CadastroTrechos');
+            navigation.navigate('RoadSectionRegister');
           }}>
             <OptionIcon 
               source={require('../../assets/images/trechos-ferrovias.png')} 
