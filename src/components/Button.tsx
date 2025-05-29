@@ -1,12 +1,13 @@
 import { forwardRef } from 'react';
-import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { DimensionValue, StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 
 type ButtonProps = {
   title: string;
   type: 'primary' | 'secondary' | 'tertiary';
+  width?: DimensionValue;
 } & TouchableOpacityProps;
 
-export const Button = forwardRef<View, ButtonProps>(({ title, type, ...touchableProps }, ref) => {
+export const Button = forwardRef<View, ButtonProps>(({ title, type, width, ...touchableProps }, ref) => {
   return (
     <TouchableOpacity
       ref={ref}
@@ -17,7 +18,7 @@ export const Button = forwardRef<View, ButtonProps>(({ title, type, ...touchable
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
-        width: '100%',
+        width: width || '100%',
       }}
     >
       <Text style={{ 

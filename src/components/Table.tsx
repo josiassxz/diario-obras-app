@@ -4,12 +4,18 @@ import { View, Text, ScrollView, StyleSheet, FlatList, TouchableOpacity } from '
 import { Table as RnTable, Row, Rows } from 'react-native-table-component';
 import { useAppStore } from '../store/store';
 import { IRoadSection } from '../types';
+import { MainModal } from './MainModal';
+import { Button } from './Button';
 
 interface IProps {
   type: 'Em Andamento' | 'Concluídos';
 }
 
 export const Table = ({ type }: IProps) => {
+
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null);
+
   const data: IRoadSection[] = [
     { id: 1, kmInicial: 1, kmFinal: 10, extensao: 9, observacao: 'Teste 1', status: type },
     { id: 2, kmInicial: 11, kmFinal: 20, extensao: 9, observacao: 'Teste 2', status: type },
@@ -67,9 +73,12 @@ export const Table = ({ type }: IProps) => {
           setRoadSectionToEdit(item);
           setCurrentScreen('edit')
         }}>
-          <Pen size={20} color="#007bff"/>
+          <Pen size={20} color="#007bff" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Excluir', item)}>
+        <TouchableOpacity onPress={() => {
+          setIsDeleting(true);
+          setItemToDelete(item.id);
+        }}>
           <Trash2 size={20} color="#dc3545" />
         </TouchableOpacity>
       </View>
@@ -111,6 +120,33 @@ export const Table = ({ type }: IProps) => {
         keyExtractor={item => item.kmInicial.toString()}
         ListHeaderComponent={Header}
       />
+
+      <MainModal visible={isDeleting} setVisible={setIsDeleting} title="Tem certeza que deseja excluir o registro?">
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 20,
+          }}
+        >
+
+          <Button title="Cancelar" onPress={() => setIsDeleting(false)} type='secondary' width={'50%'} />
+
+          <Button
+            title="Excluir"
+            onPress={() => {
+              if (itemToDelete) {
+                console.log('Excluir item', itemToDelete);
+              }
+              setIsDeleting(false);
+            }}
+            type='primary'
+            width={'50%'}
+          />
+
+        </View>
+      </MainModal>
+
     </View>
   );
 };

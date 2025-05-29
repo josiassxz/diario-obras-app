@@ -44,22 +44,25 @@ export const MainModal = ({ visible, setVisible, children, title, marginTop, hei
             elevation: 20,
           }}
         >
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', paddingBottom: 20 }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#000' }}>
+              {title}
+            </Text>
+
+            <TouchableOpacity onPress={() => setVisible(false)} style={{ marginLeft: 'auto' }}>
+              <X size={24} color="#000" />
+            </TouchableOpacity>
+          </View>
+
           <ScrollView
             contentContainerStyle={{
-              paddingBottom: 20,
+              paddingVertical: 20,
               gap: 50,
             }}
             showsVerticalScrollIndicator={false}
           >
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#000' }}>
-                {title}
-              </Text>
 
-              <TouchableOpacity onPress={() => setVisible(false)} style={{ marginLeft: 'auto' }}>
-                <X size={24} color="#000" />
-              </TouchableOpacity>
-            </View>
 
             {children}
           </ScrollView>
