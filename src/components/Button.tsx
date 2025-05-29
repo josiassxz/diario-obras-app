@@ -3,23 +3,29 @@ import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 
 
 type ButtonProps = {
   title: string;
+  type: 'primary' | 'secondary' | 'tertiary';
 } & TouchableOpacityProps;
 
-export const Button = forwardRef<View, ButtonProps>(({ title, ...touchableProps }, ref) => {
+export const Button = forwardRef<View, ButtonProps>(({ title, type, ...touchableProps }, ref) => {
   return (
     <TouchableOpacity
       ref={ref}
+      activeOpacity={0.6} 
       {...touchableProps}
       style={{
-        backgroundColor: '#FFD200',
+        backgroundColor: type === 'primary' ? '#FFD200' : type === 'secondary' ? '#6C757D' : '#FFFFFF',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
         width: '100%',
       }}
     >
-      <Text style={{ color: '#000', fontSize: 16 }}>
-        Novo Registro
+      <Text style={{ 
+        color: type === 'primary' ? '#000000' : type === 'secondary' ? '#FFFFFF' : '#000000',
+        fontSize: 16,
+        fontWeight: 'bold',
+      }}>
+        {title}
       </Text>
     </TouchableOpacity>
   );

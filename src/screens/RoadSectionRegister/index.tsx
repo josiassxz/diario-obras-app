@@ -28,13 +28,16 @@ import { StatusBar, Text, View, ScrollView, StyleSheet, TouchableOpacity } from 
 import { ChevronLeft, Menu } from 'lucide-react-native';
 import Select from '../../components/Select';
 import { RoadSectionCard } from '../../components/RoadSectionCard';
-import { RoadSectionModal } from '../../components/RoadSectionModal';
 import { RoadSectionForm } from '../../components/RoadSectionForm';
 import { Dropdown } from '../../components/Dropdown';
 import { MainModal } from '../../components/MainModal';
 import { Table } from '../../components/Table';
 import { TableComponent } from '../../components/TableComponent';
 import { Button } from '../../components/Button';
+import { useAppStore } from '../../store/store';
+import { OverviewRoadSection } from '../../components/OverviewRoadSection';
+import { CreateRoadSection } from '../../components/forms/CreateRoadSection';
+import { EditRoadSection } from '../../components/forms/EditRoadSection';
 
 type RootStackParamList = {
   RoadSectionRegister: undefined;
@@ -55,12 +58,13 @@ const cards = [
 
 export const RoadSectionRegister = () => {
   const [selectedDropdownValue, setSelectedDropdownValue] = useState<string>('');
-  const [formVisible, setFormVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [selectedRoadSection, setSelectedRoadSection] = useState<string>('');
   const [menuVisible, setMenuVisible] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
+
+  const { currentScreen, setCurrentScreen } = useAppStore()
 
   const handleOpenMenu = () => {
     setMenuVisible(true);
@@ -79,6 +83,15 @@ export const RoadSectionRegister = () => {
       return () => clearTimeout(timeout);
     }
   }, [selectedDropdownValue]);
+
+  useEffect(() => {
+
+    if(!modalVisible) {
+      setSelectedRoadSection('');
+      setCurrentScreen('view');
+    }
+
+  }, [modalVisible]);
 
   return (
     <Background>
@@ -197,19 +210,6 @@ export const RoadSectionRegister = () => {
         onClose={handleCloseMenu}
       />
 
-      {/* <RoadSectionModal
-        visible={modalVisible}
-        setVisible={setModalVisible}
-        setFormVisible={setFormVisible}
-        title={selectedRoadSection}
-      />
-
-      <RoadSectionForm
-        visible={formVisible}
-        setVisible={setFormVisible}
-        title={selectedRoadSection}
-      /> */}
-
       <MainModal
         visible={modalVisible}
         setVisible={setModalVisible}
@@ -218,26 +218,17 @@ export const RoadSectionRegister = () => {
         height={800}
       >
 
-        <>
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 20,
-            }}
-          >
-
-            <Table type='Em Andamento' setFormVisible={setFormVisible} />
-
-            <Table type='Concluídos' setFormVisible={setFormVisible} />
-            
-            <Button
-            title='Novo Registro'
-            />
-
-          </View>
-        </>
+        {
+          currentScreen === 'view' ?
+            <OverviewRoadSection />
+            : currentScreen === 'create' ?
+              <CreateRoadSection
+              />
+              : currentScreen === 'edit' ?
+                <EditRoadSection
+                />
+                : null
+        }
 
       </MainModal>
 

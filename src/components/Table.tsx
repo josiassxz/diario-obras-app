@@ -2,19 +2,22 @@ import { Pen, Trash2 } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Table as RnTable, Row, Rows } from 'react-native-table-component';
+import { useAppStore } from '../store/store';
+import { IRoadSection } from '../types';
 
 interface IProps {
   type: 'Em Andamento' | 'Concluídos';
-  setFormVisible: (visible: boolean) => void;
 }
 
-export const Table = ({ type, setFormVisible }: IProps) => {
-  const data = [
-    { kmInicial: 1, kmFinal: 10, extensao: 9, observacao: 'Teste 1' },
-    { kmInicial: 11, kmFinal: 20, extensao: 9, observacao: 'Teste 2' },
-    { kmInicial: 21, kmFinal: 30, extensao: 9, observacao: 'Teste 3' },
-    { kmInicial: 31, kmFinal: 40, extensao: 9, observacao: 'Teste 4' }
+export const Table = ({ type }: IProps) => {
+  const data: IRoadSection[] = [
+    { id: 1, kmInicial: 1, kmFinal: 10, extensao: 9, observacao: 'Teste 1', status: type },
+    { id: 2, kmInicial: 11, kmFinal: 20, extensao: 9, observacao: 'Teste 2', status: type },
+    { id: 3, kmInicial: 21, kmFinal: 30, extensao: 9, observacao: 'Teste 3', status: type },
+    { id: 4, kmInicial: 31, kmFinal: 40, extensao: 9, observacao: 'Teste 4', status: type }
   ];
+
+  const { currentScreen, setCurrentScreen, setRoadSectionToEdit } = useAppStore()
 
   const breakWords = (text: string) => text.split(' ').join('\n');
 
@@ -39,7 +42,7 @@ export const Table = ({ type, setFormVisible }: IProps) => {
   );
 
 
-  const renderItem = ({ item }: any) => (
+  const renderItem = ({ item }: { item: IRoadSection }) => (
     <View style={{
       flexDirection: 'row',
       width: '100%',
@@ -60,7 +63,10 @@ export const Table = ({ type, setFormVisible }: IProps) => {
         <Text style={{ fontSize: 16, textAlign: 'center' }}>{item.observacao}</Text>
       </View>
       <View style={{ width: '20%', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-        <TouchableOpacity onPress={() => setFormVisible(true)}>
+        <TouchableOpacity onPress={() => {
+          setRoadSectionToEdit(item);
+          setCurrentScreen('edit')
+        }}>
           <Pen size={20} color="#007bff"/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => console.log('Excluir', item)}>

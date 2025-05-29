@@ -38,7 +38,10 @@ export const TextArea = ({ label, placeholder = '', ...props }: IProps) => {
           width: '100%',
           padding: 10,
           fontSize: 16,
-          height: 120, // define uma altura fixa adequada para textarea
+          height: 120,
+          paddingVertical: 10,
+          paddingLeft: 10,
+          fontWeight: 'bold',
         }}
       />
     </View>

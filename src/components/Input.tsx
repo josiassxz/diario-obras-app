@@ -4,7 +4,7 @@ import { Text, TextInput, View } from 'react-native';
 interface IProps extends React.ComponentProps<typeof TextInput> {
   label: string;
   placeholder?: string;
-  
+
 }
 
 export const Input = ({ label, placeholder = '', ...props }: IProps) => {
@@ -38,7 +38,9 @@ export const Input = ({ label, placeholder = '', ...props }: IProps) => {
           borderRadius: 8,
           width: '100%',
           paddingVertical: 10,
+          paddingLeft: 10,
           fontSize: 16,
+          fontWeight: 'bold',
         }}
       />
     </View>
