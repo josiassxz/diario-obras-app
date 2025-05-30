@@ -6,7 +6,7 @@ import { useAppStore } from '../store/store'
 import { TableComponent } from './TableComponent'
 
 export const OverviewRoadSection = () => {
-  
+
   const { currentScreen, setCurrentScreen } = useAppStore()
 
   return (
@@ -20,14 +20,15 @@ export const OverviewRoadSection = () => {
         }}
       >
 
-        <TableComponent type='Em Andamento' />
-        <TableComponent type='Concluídos'/>
-
         <Button
           title='Novo Registro'
           type='primary'
           onPress={() => setCurrentScreen('create')}
         />
+
+        <TableComponent type='Em Andamento' />
+        
+        <TableComponent type='Concluídos' />
 
       </View>
     </>
