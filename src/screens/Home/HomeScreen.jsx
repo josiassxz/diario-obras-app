@@ -130,7 +130,7 @@ const HomeScreen = () => {
           <NavText>Home</NavText>
         </NavButton>
         
-        <NavButton onPress={() => navigation.navigate('CadastroTrechos')}>
+        <NavButton onPress={() => navigation.navigate('RoadSectionRegister')}>
           <NavIcon 
             source={require('../../assets/images/trechos-ferrovias.png')} 
           />

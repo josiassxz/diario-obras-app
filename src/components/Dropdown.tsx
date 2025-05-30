@@ -3,27 +3,14 @@ import { SetStateAction, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown as RnDropdown } from 'react-native-element-dropdown';
 
-const data = [
-  { label: 'EFC', value: '1' },
-  { label: 'EFPO', value: '2' },
-  { label: 'EFVM', value: '3' },
-  { label: 'FCA', value: '4' },
-  { label: 'FNSTN', value: '5' },
-  { label: 'FTC', value: '6' },
-  { label: 'FTL', value: '7' },
-  { label: 'MRS', value: '8' },
-  { label: 'RMC', value: '8' },
-  { label: 'RMN', value: '8' },
-  { label: 'RMO', value: '8' },
-];
-
 interface IProps {
   value: string | null;
   setValue: React.Dispatch<SetStateAction<string>>;
   placeholder: string;
+  data: { label: string; value: string }[];
 }
 
-export const Dropdown = ({ value, setValue, placeholder }: IProps) => {
+export const Dropdown = ({ value, setValue, placeholder, data }: IProps) => {
 
   const [isFocus, setIsFocus] = useState(false);
 

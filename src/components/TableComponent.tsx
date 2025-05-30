@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Table as RnTable, Row, Rows } from 'react-native-table-component';
-import { Expand, Eye, Pen, PlusCircle, Trash2 } from 'lucide-react-native';
+import { Expand, Eye, Pen, PlusCircle, Search, Trash2 } from 'lucide-react-native';
 import { IRoadSection } from '../types';
 import { MainModal } from './MainModal';
 import { Button } from './Button';
@@ -45,9 +45,9 @@ const Icons = ({ isDeleting, setIsDeleting, setItemToDelete, item, statusRoadSec
             <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <TouchableOpacity onPress={() => {
                 setRoadSectionToEdit(item);
-                setCurrentScreen('view')
+                setCurrentScreen('details')
               }}>
-                <PlusCircle size={20} color="blue" />
+                <Search size={20} color="black" />
               </TouchableOpacity>
             </View>
           )
@@ -57,11 +57,11 @@ const Icons = ({ isDeleting, setIsDeleting, setItemToDelete, item, statusRoadSec
 }
 
 const items: IRoadSection[] = [
-  { id: 1, kmInicial: 1, kmFinal: 10, extensao: 9, observacao: 'Teste 1', status: 'Em Andamento' },
-  { id: 2, kmInicial: 11, kmFinal: 20, extensao: 9, observacao: 'Teste 2', status: 'Em Andamento' },
-  { id: 3, kmInicial: 21, kmFinal: 30, extensao: 9, observacao: 'Teste 3', status: 'Em Andamento' },
-  { id: 4, kmInicial: 31, kmFinal: 40, extensao: 9, observacao: 'Teste 4', status: 'Em Andamento' },
-  { id: 5, kmInicial: 41, kmFinal: 50, extensao: 9, observacao: 'Teste 5', status: 'Em Andamento' },
+  { id: 1, kmInicial: 1, kmFinal: 10, extensao: 9, status: 'Em Andamento' },
+  { id: 2, kmInicial: 11, kmFinal: 20, extensao: 9, status: 'Em Andamento' },
+  { id: 3, kmInicial: 21, kmFinal: 30, extensao: 9, status: 'Em Andamento' },
+  { id: 4, kmInicial: 31, kmFinal: 40, extensao: 9, status: 'Em Andamento' },
+  { id: 5, kmInicial: 41, kmFinal: 50, extensao: 9, status: 'Em Andamento' },
 ];
 
 interface IProps {
@@ -76,13 +76,12 @@ export const TableComponent = ({ type }: IProps) => {
   const [currentScreen, setCurrentScreen] = useState<string>('list');
 
   const tableData = {
-    tableHead: ['Km Inicial', 'Km Final', 'Extensão', 'Observação', ''],
+    tableHead: ['Km Inicial', 'Km Final', 'Extensão', ''],
     tableData: [
       ...items.map(item => [
         item.kmInicial.toString(),
         item.kmFinal.toString(),
         item.extensao.toString(),
-        item.observacao,
         <Icons
           key={item.id}
           isDeleting={false}

@@ -56,13 +56,35 @@ const cards = [
   { id: '6', title: 'Obras de Arte Correntes' },
 ]
 
+const empreendimentoData = [
+  { label: 'EFC', value: '1' },
+  { label: 'EFPO', value: '2' },
+  { label: 'EFVM', value: '3' },
+  { label: 'FCA', value: '4' },
+  { label: 'FNSTN', value: '5' },
+  { label: 'FTC', value: '6' },
+  { label: 'FTL', value: '7' },
+  { label: 'MRS', value: '8' },
+  { label: 'RMC', value: '8' },
+  { label: 'RMN', value: '8' },
+  { label: 'RMO', value: '8' },
+];
+
+const lotesData = [
+  { label: 'Lote 1', value: '1' },
+  { label: 'Lote 2', value: '2' },
+  { label: 'Lote 3', value: '3' },
+  { label: 'Lote 4', value: '4' },
+]
+
 export const RoadSectionRegister = () => {
-  const [selectedDropdownValue, setSelectedDropdownValue] = useState<string>('');
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [selectedRoadSection, setSelectedRoadSection] = useState<string>('');
   const [menuVisible, setMenuVisible] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
+  const [selectedEmpreendimento, setSelectedEmpreendimento] = useState<string>('');
+  const [selectedLote, setSelectedLote] = useState<string>('');
 
   const { currentScreen, setCurrentScreen } = useAppStore()
 
@@ -75,18 +97,28 @@ export const RoadSectionRegister = () => {
   };
 
   useEffect(() => {
-    if (selectedDropdownValue && scrollViewRef.current) {
+    if (selectedLote !== '' && selectedEmpreendimento !== '' && scrollViewRef.current) {
 
       const timeout = setTimeout(() => {
         scrollViewRef.current?.scrollToEnd({ animated: true });
       }, 100);
       return () => clearTimeout(timeout);
     }
-  }, [selectedDropdownValue]);
+  }, [selectedLote]);
+
+  useEffect(() => {
+    if (selectedLote !== '' && selectedEmpreendimento !== '' && scrollViewRef.current) {
+
+      const timeout = setTimeout(() => {
+        scrollViewRef.current?.scrollToEnd({ animated: true });
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [selectedEmpreendimento]);
 
   useEffect(() => {
 
-    if(!modalVisible) {
+    if (!modalVisible) {
       setSelectedRoadSection('');
       setCurrentScreen('view');
     }
@@ -142,12 +174,20 @@ export const RoadSectionRegister = () => {
             </ContentSubtitle>
 
             <Dropdown
-              value={selectedDropdownValue}
-              setValue={setSelectedDropdownValue}
-              placeholder='Selecione o trecho'
+              value={selectedEmpreendimento}
+              setValue={setSelectedEmpreendimento}
+              placeholder='Selecione o empreendimento'
+              data={empreendimentoData}
             />
 
-            {selectedDropdownValue && (
+            <Dropdown
+              value={selectedLote}
+              setValue={setSelectedLote}
+              placeholder='Selecione o lote'
+              data={lotesData}
+            />
+
+            {selectedLote && selectedEmpreendimento && (
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 20, justifyContent: 'space-between', width: '100%', columnGap: 10 }}>
                 {
                   cards.map(card => (
@@ -183,7 +223,7 @@ export const RoadSectionRegister = () => {
           <NavText>Home</NavText>
         </NavButton>
 
-        <NavButton onPress={() => navigation.navigate('CadastroTrechos')}>
+        <NavButton onPress={() => navigation.navigate('RoadSectionRegister')}>
           <NavIcon source={require('../../assets/images/trechos-ferrovias.png')} />
           <NavText>Cadastro</NavText>
         </NavButton>
@@ -227,7 +267,10 @@ export const RoadSectionRegister = () => {
               : currentScreen === 'edit' ?
                 <EditRoadSection
                 />
-                : null
+                : currentScreen === 'details' ?
+                  <EditRoadSection
+                  />
+                  : null
         }
 
       </MainModal>

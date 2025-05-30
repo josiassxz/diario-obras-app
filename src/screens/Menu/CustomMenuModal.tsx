@@ -98,7 +98,7 @@ const CustomMenuModal: React.FC<CustomMenuModalProps> = ({ visible, onClose }) =
                 </MenuItem>
                 <DashedDivider />
                 
-                <MenuItem onPress={() => handleNavigate('CadastroTrechos')} activeOpacity={0.7}>
+                <MenuItem onPress={() => handleNavigate('RoadSectionRegister')} activeOpacity={0.7}>
                   <MenuItemIcon source={require('../../assets/images/trechos-ferrovias.png')} />
                   <MenuItemText>Cadastro de informações dos trechos</MenuItemText>
                 </MenuItem>

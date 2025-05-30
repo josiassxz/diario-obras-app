@@ -5,6 +5,5 @@ export interface IRoadSection {
   kmInicial: number;
   kmFinal: number;
   extensao: number;
-  observacao: string;
   status: 'Em Andamento' | 'Concluídos';
 }

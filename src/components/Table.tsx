@@ -17,10 +17,10 @@ export const Table = ({ type }: IProps) => {
   const [itemToDelete, setItemToDelete] = useState<number | null>(null);
 
   const data: IRoadSection[] = [
-    { id: 1, kmInicial: 1, kmFinal: 10, extensao: 9, observacao: 'Teste 1', status: type },
-    { id: 2, kmInicial: 11, kmFinal: 20, extensao: 9, observacao: 'Teste 2', status: type },
-    { id: 3, kmInicial: 21, kmFinal: 30, extensao: 9, observacao: 'Teste 3', status: type },
-    { id: 4, kmInicial: 31, kmFinal: 40, extensao: 9, observacao: 'Teste 4', status: type }
+    { id: 1, kmInicial: 1, kmFinal: 10, extensao: 9,status: type },
+    { id: 2, kmInicial: 11, kmFinal: 20, extensao: 9, status: type },
+    { id: 3, kmInicial: 21, kmFinal: 30, extensao: 9, status: type },
+    { id: 4, kmInicial: 31, kmFinal: 40, extensao: 9,  status: type }
   ];
 
   const { currentScreen, setCurrentScreen, setRoadSectionToEdit } = useAppStore()
@@ -37,9 +37,6 @@ export const Table = ({ type }: IProps) => {
       </View>
       <View style={{ width: '20%' }}>
         <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>{breakWords('Extensão')}</Text>
-      </View>
-      <View style={{ width: '20%' }}>
-        <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>{breakWords('Observação')}</Text>
       </View>
       <View style={{ width: '20%' }}>
         <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}></Text>
@@ -64,9 +61,6 @@ export const Table = ({ type }: IProps) => {
       </View>
       <View style={{ width: '20%' }}>
         <Text style={{ fontSize: 16, textAlign: 'center' }}>{item.extensao}</Text>
-      </View>
-      <View style={{ width: '20%' }}>
-        <Text style={{ fontSize: 16, textAlign: 'center' }}>{item.observacao}</Text>
       </View>
       <View style={{ width: '20%', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
         <TouchableOpacity onPress={() => {

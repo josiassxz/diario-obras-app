@@ -5,9 +5,9 @@ import { IRoadSection } from "../types";
 
 
 type AppStore = {
-  currentScreen: 'edit' | 'view' | 'create'
+  currentScreen: 'edit' | 'view' | 'create' | 'details';
   roadSectionToEdit: IRoadSection | null;
-  setCurrentScreen: (screen: 'edit' | 'view' | 'create') => void;
+  setCurrentScreen: (screen: 'edit' | 'view' | 'create' | 'details') => void;
   setRoadSectionToEdit: (roadSection: IRoadSection | null) => void;
 }
 
@@ -16,7 +16,7 @@ export const useAppStore = create<AppStore>()(
     (set, get) => ({
       currentScreen: 'view',
       roadSectionToEdit: null,
-      setCurrentScreen: (screen: 'edit' | 'view' | 'create') => set({ currentScreen: screen }),
+      setCurrentScreen: (screen: 'edit' | 'view' | 'create' | 'details') => set({ currentScreen: screen }),
       setRoadSectionToEdit: (roadSection: IRoadSection | null) => set({ roadSectionToEdit: roadSection }),
     }),
     {

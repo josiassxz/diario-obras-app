@@ -111,17 +111,20 @@ export const EditRoadSection = () => {
 
         <TextArea
           label='Observações'
-          value={roadSectionToEdit?.observacao || ''}
+          value={''}
         />
 
-        <Button
-          title='Salvar'
-          type='primary'
-          onPress={() => console.log('Salvar')}
-        />
+
+        {
+          currentScreen === 'edit' && <Button
+            title='Salvar'
+            type='primary'
+            onPress={() => console.log('Salvar')}
+          />
+        }
 
         <Button
-          title='Cancelar'
+          title={currentScreen === 'edit' ? 'Cancelar' : 'Voltar'}
           type='secondary'
           onPress={() => setCurrentScreen('view')}
         />
